@@ -12,7 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class AppComponent implements OnInit {
   title = 'xtramile app';
-  displayedColumns: string[] = ['pid', 'firstName', 'lastName', 'gender', 'phoneNo', 'dateOfBirth'];
+  displayedColumns: string[] = ['pid', 'firstName', 'lastName', 'gender', 'phoneNo', 'dateOfBirth', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -20,20 +20,59 @@ export class AppComponent implements OnInit {
   constructor(private _dialog: MatDialog, private _patientService: PatientService) {}
   
   ngOnInit(): void {
-    this.getEmployeeList();
+    this.getPatientList();
   }
 
   openAddEditPatientForm() {
-    this._dialog.open(PatientAddEditComponent);
+    const dialogRef = this._dialog.open(PatientAddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getPatientList();
+        }
+      }
+    })
   }
   
-  getEmployeeList() {
+  getPatientList() {
     this._patientService.getPatientList().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
       },
       error: console.log,
+    });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  deletePatient(pid: number) {
+    this._patientService.deletePatient(pid).subscribe({
+      next: () => {
+        alert("Patient deleted !");
+        this.getPatientList();
+      },
+      error: console.log,
+    });
+  }
+
+  openEditPatientForm(data: any) {
+    const dialogRef = this._dialog.open(PatientAddEditComponent, {
+      data,
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getPatientList();
+        }
+      },
     });
   }
 }
