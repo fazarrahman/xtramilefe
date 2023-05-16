@@ -51,6 +51,30 @@
         <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
       </ng-container>
 
+      <!-- address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+
+      <!-- postcode Column -->
+      <ng-container matColumnDef="postcode">
+        <th mat-header-cell *matHeaderCellDef> Postcode </th>
+        <td mat-cell *matCellDef="let element"> {{element.postcode}} </td>
+      </ng-container>
+
+      <!-- state Column -->
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <!-- suburb Column -->
+      <ng-container matColumnDef="suburb">
+        <th mat-header-cell *matHeaderCellDef> Suburb </th>
+        <td mat-cell *matCellDef="let element"> {{element.suburb}} </td>
+      </ng-container>
+
       <!-- action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>

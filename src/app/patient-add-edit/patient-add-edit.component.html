@@ -47,6 +47,30 @@
                 </mat-datepicker>
             </mat-form-field>
         </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address" formControlName="address">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Postcode</mat-label>
+                <input matInput placeholder="Postcode" formControlName="postcode">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="State" formControlName="state">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Suburb</mat-label>
+                <input matInput placeholder="Suburb" formControlName="suburb">
+            </mat-form-field>
+        </div>
     </div>
     <div mat-dialog-actions>
         <button mat-raised-button type="button" [mat-dialog-close]="false">CANCEL</button>

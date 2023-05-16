@@ -12,7 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class AppComponent implements OnInit {
   title = 'xtramile app';
-  displayedColumns: string[] = ['pid', 'firstName', 'lastName', 'gender', 'phoneNo', 'dateOfBirth', 'action'];
+  displayedColumns: string[] = ['pid', 'firstName', 'lastName', 'gender', 'phoneNo', 'dateOfBirth', 'address', 'postcode', 'state', 'suburb', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

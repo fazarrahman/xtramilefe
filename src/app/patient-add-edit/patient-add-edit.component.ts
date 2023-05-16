@@ -20,7 +20,11 @@ export class PatientAddEditComponent implements OnInit {
       lastName: '',
       gender: '',
       phoneNo: '',
-      dateOfBirth: ''
+      dateOfBirth: '',
+      address: '',
+      postcode: '',
+      state: '',
+      suburb: ''
     });
   }
 
